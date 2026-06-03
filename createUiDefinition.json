@@ -5,7 +5,18 @@
     "parameters": {
         "config": {
             "isWizard": false,
-            "basics": {}
+            "basics": {
+                "resourceGroup": {
+                    "allowExisting": true,
+                    "constraints": {
+                        "required": true
+                    }
+                },
+                "location": {
+                    "label": "Deployment region",
+                    "toolTip": "Region where deployment metadata is stored. This does not move or recreate your resource group."
+                }
+            }
         },
         "basics": [
             {
@@ -16,23 +27,12 @@
                     "icon": "Info",
                     "text": "This deployment assigns BlueVoyant SOC Entra group RBAC roles on an existing Microsoft Sentinel resource group. Azure Lighthouse, the Log Analytics workspace, data connectors, and Sentinel settings must already be configured before running this template."
                 }
-            },
-            {
-                "name": "rgName",
-                "type": "Microsoft.Common.TextBox",
-                "label": "Resource group name",
-                "defaultValue": "",
-                "toolTip": "Name of the existing resource group that contains your Microsoft Sentinel workspace.",
-                "constraints": {
-                    "required": true,
-                    "regex": "^(?=.{1,90}$)(?!.*\\.$)[A-Za-z0-9._()-]+$",
-                    "validationMessage": "Use 1–90 characters. Allowed: letters, digits, period, underscore, hyphen, parentheses. Name cannot end with a period."
-                },
-                "visible": true
             }
         ],
+        "steps": [],
         "outputs": {
-            "rgName": "[basics('rgName')]"
+            "rgName": "[resourceGroup().name]",
+            "location": "[location()]"
         }
     }
 }
