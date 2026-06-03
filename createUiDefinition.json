@@ -11,10 +11,6 @@
                     "constraints": {
                         "required": true
                     }
-                },
-                "location": {
-                    "label": "Deployment region",
-                    "toolTip": "Region where deployment metadata is stored. This does not move or recreate your resource group."
                 }
             }
         },
@@ -25,14 +21,11 @@
                 "visible": true,
                 "options": {
                     "icon": "Info",
-                    "text": "This deployment assigns BlueVoyant SOC Entra group RBAC roles on an existing Microsoft Sentinel resource group. Azure Lighthouse, the Log Analytics workspace, data connectors, and Sentinel settings must already be configured before running this template."
+                    "text": "Select the existing resource group that contains your Microsoft Sentinel workspace. This deployment assigns BlueVoyant SOC Entra group RBAC roles on that resource group. Azure Lighthouse, data connectors, and Sentinel settings must already be configured."
                 }
             }
         ],
         "steps": [],
-        "outputs": {
-            "rgName": "[resourceGroup().name]",
-            "location": "[location()]"
-        }
+        "outputs": {}
     }
 }
