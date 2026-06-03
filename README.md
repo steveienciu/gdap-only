@@ -12,6 +12,6 @@ This template does **not** create a resource group, workspace, connectors, Light
 
 ## Deploy to Azure
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsteveienciu%2Fgdap-only%2Fmain%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fsteveienciu%gdap-only%2Fmain%2FcreateUiDefinition.json" target="_blank">
-    <img src="https://aka.ms/deploytoazurebutton"/>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsteveienciu%2Fgdap-only%2Fmain%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fsteveienciu%2Fgdap-only%2Fmain%2FcreateUiDefinition.json" target="_blank">
+    <img src="https://aka.ms/deploytoazurebutton""/>
 </a>
