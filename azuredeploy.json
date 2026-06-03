@@ -1,16 +1,10 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "metadata": {
         "description": "Deploys BlueVoyant SOC Entra group RBAC role assignments on an existing Microsoft Sentinel resource group. Use when Lighthouse, connectors, and workspace settings are already configured."
     },
     "parameters": {
-        "rgName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the existing resource group that hosts the Sentinel workspace"
-            }
-        },
         "_artifactsLocation": {
             "type": "string",
             "metadata": {
@@ -31,7 +25,6 @@
             "name": "blueVoyantRgRoleAssignments",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2023-07-01",
-            "resourceGroup": "[parameters('rgName')]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -42,10 +35,6 @@
         }
     ],
     "outputs": {
-        "resourceGroupName": {
-            "type": "string",
-            "value": "[parameters('rgName')]"
-        },
         "roleAssignmentScope": {
             "type": "string",
             "value": "[reference('blueVoyantRgRoleAssignments').outputs.roleAssignmentScope.value]"
