@@ -12,32 +12,6 @@ This template does **not** create a resource group, workspace, connectors, Light
 
 ## Deploy to Azure
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsteveienciu%2FSentinelStuff%2Fmain%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fsteveienciu%2FSentinelStuff%2Fmain%2FcreateUiDefinition.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsteveienciu%2Fgdap-only%2Fmain%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fsteveienciu%gdap-only%2Fmain%2FcreateUiDefinition.json" target="_blank">
     <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
-
-## Prerequisites
-
-- An existing resource group containing the Sentinel workspace
-- Deployer has **Owner** or **User Access Administrator** on that resource group (required to create role assignments)
-
-## Azure CLI
-
-```bash
-az deployment sub create \
-  --location "<region>" \
-  --template-uri "https://raw.githubusercontent.com/steveienciu/SentinelStuff/main/azuredeploy.json" \
-  --parameters rgName="<existing-rg-name>"
-```
-
-Or deploy the linked template directly at resource group scope:
-
-```bash
-az deployment group create \
-  --resource-group "<existing-rg-name>" \
-  --template-uri "https://raw.githubusercontent.com/steveienciu/SentinelStuff/main/LinkedTemplates/bluevoyantRgRoleAssignments.json"
-```
-
-## Role assignments
-
-See metadata in [LinkedTemplates/bluevoyantRgRoleAssignments.json](LinkedTemplates/bluevoyantRgRoleAssignments.json) for the Entra groups and roles assigned.
