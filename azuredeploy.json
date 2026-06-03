@@ -10,7 +10,7 @@
             "metadata": {
                 "description": "Base URI where linked templates are stored"
             },
-            "defaultValue": "https://raw.githubusercontent.com/steveienciu/SentinelStuff/main/"
+            "defaultValue": "https://raw.githubusercontent.com/steveienciu/gdap-only/main/"
         },
         "_artifactsLocationSasToken": {
             "type": "securestring",
