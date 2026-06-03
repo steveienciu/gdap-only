@@ -1,0 +1,122 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "description": "BlueVoyant SOC Entra group RBAC on the resource group:\n\n- BlueVoyant SOC - Engineering (399d0d2c-3491-4f95-be45-3c299e5e2121): Contributor (b24988ac-6180-42a0-ab88-20f7382dd24c)\n- BlueVoyant SOC - Client Team (75dc60e6-ee48-4439-9b47-8922019afa80): Microsoft Sentinel Reader (8d289c81-5878-46d4-8554-54e1e3d8b5cb)\n- BlueVoyant SOC - Analysts (714b460f-efd4-4c71-bc7c-3599d3dcf4af): Microsoft Sentinel Responder (3e150937-b8fe-4cfb-8069-0eaf05ecd056)\n- BlueVoyant SOC - Implementation PM (6bc06433-82bf-4a7e-a61e-0f1bb2c18f29): Microsoft Sentinel Reader (8d289c81-5878-46d4-8554-54e1e3d8b5cb)\n- BlueVoyant SOC - Content Engineering (e36b3a27-ed40-4581-910c-897c0e163f1c): Microsoft Sentinel Reader (8d289c81-5878-46d4-8554-54e1e3d8b5cb)"
+    },
+    "variables": {
+        "groupObjectId": "399d0d2c-3491-4f95-be45-3c299e5e2121",
+        "builtInRoleId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+        "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', variables('builtInRoleId'))]",
+        "roleAssignmentName": "[guid(resourceGroup().id, variables('groupObjectId'), variables('roleDefinitionId'))]",
+        "groupObjectId2": "75dc60e6-ee48-4439-9b47-8922019afa80",
+        "builtInRoleId2": "8d289c81-5878-46d4-8554-54e1e3d8b5cb",
+        "roleDefinitionId2": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', variables('builtInRoleId2'))]",
+        "roleAssignmentName2": "[guid(resourceGroup().id, variables('groupObjectId2'), variables('roleDefinitionId2'))]",
+        "groupObjectId3": "714b460f-efd4-4c71-bc7c-3599d3dcf4af",
+        "builtInRoleId3": "3e150937-b8fe-4cfb-8069-0eaf05ecd056",
+        "roleDefinitionId3": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', variables('builtInRoleId3'))]",
+        "roleAssignmentName3": "[guid(resourceGroup().id, variables('groupObjectId3'), variables('roleDefinitionId3'))]",
+        "groupObjectId4": "6bc06433-82bf-4a7e-a61e-0f1bb2c18f29",
+        "builtInRoleId4": "8d289c81-5878-46d4-8554-54e1e3d8b5cb",
+        "roleDefinitionId4": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', variables('builtInRoleId4'))]",
+        "roleAssignmentName4": "[guid(resourceGroup().id, variables('groupObjectId4'), variables('roleDefinitionId4'))]",
+        "groupObjectId5": "e36b3a27-ed40-4581-910c-897c0e163f1c",
+        "builtInRoleId5": "8d289c81-5878-46d4-8554-54e1e3d8b5cb",
+        "roleDefinitionId5": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', variables('builtInRoleId5'))]",
+        "roleAssignmentName5": "[guid(resourceGroup().id, variables('groupObjectId5'), variables('roleDefinitionId5'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2022-04-01",
+            "name": "[variables('roleAssignmentName')]",
+            "metadata": {
+                "description": "BlueVoyant SOC - Engineering — Contributor (b24988ac-6180-42a0-ab88-20f7382dd24c). Required to create resources and configure the resource group for Sentinel deployments."
+            },
+            "properties": {
+                "roleDefinitionId": "[variables('roleDefinitionId')]",
+                "principalId": "[variables('groupObjectId')]",
+                "principalType": "ForeignGroup"
+            }
+        },
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2022-04-01",
+            "name": "[variables('roleAssignmentName2')]",
+            "metadata": {
+                "description": "BlueVoyant SOC - Client Team — Microsoft Sentinel Reader (8d289c81-5878-46d4-8554-54e1e3d8b5cb). Read access to the Log Analytics workspace."
+            },
+            "properties": {
+                "roleDefinitionId": "[variables('roleDefinitionId2')]",
+                "principalId": "[variables('groupObjectId2')]",
+                "principalType": "ForeignGroup"
+            }
+        },
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2022-04-01",
+            "name": "[variables('roleAssignmentName3')]",
+            "metadata": {
+                "description": "BlueVoyant SOC - Analysts — Microsoft Sentinel Responder (3e150937-b8fe-4cfb-8069-0eaf05ecd056)."
+            },
+            "properties": {
+                "roleDefinitionId": "[variables('roleDefinitionId3')]",
+                "principalId": "[variables('groupObjectId3')]",
+                "principalType": "ForeignGroup"
+            }
+        },
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2022-04-01",
+            "name": "[variables('roleAssignmentName4')]",
+            "metadata": {
+                "description": "BlueVoyant SOC - Implementation PM — Microsoft Sentinel Reader (8d289c81-5878-46d4-8554-54e1e3d8b5cb)."
+            },
+            "properties": {
+                "roleDefinitionId": "[variables('roleDefinitionId4')]",
+                "principalId": "[variables('groupObjectId4')]",
+                "principalType": "ForeignGroup"
+            }
+        },
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2022-04-01",
+            "name": "[variables('roleAssignmentName5')]",
+            "metadata": {
+                "description": "BlueVoyant SOC - Content Engineering — Microsoft Sentinel Reader (8d289c81-5878-46d4-8554-54e1e3d8b5cb)."
+            },
+            "properties": {
+                "roleDefinitionId": "[variables('roleDefinitionId5')]",
+                "principalId": "[variables('groupObjectId5')]",
+                "principalType": "ForeignGroup"
+            }
+        }
+    ],
+    "outputs": {
+        "roleAssignmentScope": {
+            "type": "string",
+            "value": "[resourceGroup().id]"
+        },
+        "roleAssignmentName": {
+            "type": "string",
+            "value": "[variables('roleAssignmentName')]"
+        },
+        "roleAssignmentName2": {
+            "type": "string",
+            "value": "[variables('roleAssignmentName2')]"
+        },
+        "roleAssignmentName3": {
+            "type": "string",
+            "value": "[variables('roleAssignmentName3')]"
+        },
+        "roleAssignmentName4": {
+            "type": "string",
+            "value": "[variables('roleAssignmentName4')]"
+        },
+        "roleAssignmentName5": {
+            "type": "string",
+            "value": "[variables('roleAssignmentName5')]"
+        }
+    }
+}

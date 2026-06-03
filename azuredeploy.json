@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "description": "Deploys BlueVoyant SOC Entra group RBAC role assignments on an existing Microsoft Sentinel resource group. Use when Lighthouse, connectors, and workspace settings are already configured."
+    },
+    "parameters": {
+        "rgName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the existing resource group that hosts the Sentinel workspace"
+            }
+        },
+        "_artifactsLocation": {
+            "type": "string",
+            "metadata": {
+                "description": "Base URI where linked templates are stored"
+            },
+            "defaultValue": "https://raw.githubusercontent.com/steveienciu/SentinelStuff/main/"
+        },
+        "_artifactsLocationSasToken": {
+            "type": "securestring",
+            "defaultValue": "",
+            "metadata": {
+                "description": "SAS token for _artifactsLocation when templates are hosted in private storage"
+            }
+        }
+    },
+    "resources": [
+        {
+            "name": "blueVoyantRgRoleAssignments",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2023-07-01",
+            "resourceGroup": "[parameters('rgName')]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('_artifactsLocation'), 'LinkedTemplates/bluevoyantRgRoleAssignments.json', parameters('_artifactsLocationSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "resourceGroupName": {
+            "type": "string",
+            "value": "[parameters('rgName')]"
+        },
+        "roleAssignmentScope": {
+            "type": "string",
+            "value": "[reference('blueVoyantRgRoleAssignments').outputs.roleAssignmentScope.value]"
+        }
+    }
+}
