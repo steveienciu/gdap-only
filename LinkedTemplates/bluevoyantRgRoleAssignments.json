@@ -22,7 +22,7 @@
         "roleDefinitionId4": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', variables('builtInRoleId4'))]",
         "roleAssignmentName4": "[guid(resourceGroup().id, variables('groupObjectId4'), variables('roleDefinitionId4'))]",
         "groupObjectId5": "e36b3a27-ed40-4581-910c-897c0e163f1c",
-        "builtInRoleId5": "8d289c81-5878-46d4-8554-54e1e3d8b5cb",
+        "builtInRoleId5": "b24988ac-6180-42a0-ab88-20f7382dd24c",
         "roleDefinitionId5": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', variables('builtInRoleId5'))]",
         "roleAssignmentName5": "[guid(resourceGroup().id, variables('groupObjectId5'), variables('roleDefinitionId5'))]"
     },
